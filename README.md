@@ -2,18 +2,17 @@
 
 ## users テーブル
 
-| Column           | Type   | Options                   |
-| ---------------- | ------ | ------------------------- |
-| nickname         | string | null: false               |
-| email            | string | null: false, unique: true |
-| password         | string | null: false               |
-| family_name      | string | null: false               |
-| first_name       | string | null: false               |
-| family_reading   | string | null: false               |
-| first_reading    | string | null: false               |
-| year             | eunm   | null: false               |
-| month            | eunm   | null: false               |
-| day              | eunm   | null: false               |
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| family_name        | string | null: false               |
+| first_name         | string | null: false               |
+| family_reading     | string | null: false               |
+| first_reading      | string | null: false               |
+| birthday           | date   | null: false               |
+
 
 ### Association
 
@@ -25,20 +24,17 @@
 
 ## items テーブル
 
-| Column    | Type       | Options                        |
-| ------    | ---------- | ------------------------------ |
-| image     | blob       | null: false                    |
-| title     | string     | null: false                    |
-| text      | text       | null: false                    |
-| category  | enum       | null: false                    |
-| condition | enum       | null: false                    |
-| shipping  | enum       | null: false                    |
-| region    | enum       | null: false                    |
-| date      | enum       | null: false                    |
-| price     | decimal    | null: false                    |
-| fee       | decimal    | null: false                    |
-| profit    | decimal    | null: false                    |
-| user_id   | references | null: false, foreign_key: true |
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| title        | string     | null: false                    |
+| text         | text       | null: false                    |
+| category_id  | integer    | null: false                    |
+| condition_id | integer    | null: false                    |
+| shipping_id  | integer    | null: false                    |
+| region-id    | integer    | null: false                    |
+| date-id      | integer    | null: false                    |
+| price        | decimal    | null: false                    |
+| user_id      | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -48,17 +44,16 @@
 
 
 
-## order テーブル
+## orders テーブル
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| user_id | references | null: false, foreign_key: true |
-| item_id | references | null: false, foreign_key: true |
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| users  | references | null: false, foreign_key: true |
+| items  | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :order
 - belongs_to :address
 
 
@@ -67,16 +62,14 @@
 
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
-| postcode   | char       | null: false                    |
+| postcode   | string       | null: false                    |
 | prefecture | enum       | null: false                    |
 | city       | string     | null: false                    
 | house_unm  | string     | null: false                    |
 | building   | string     |                                |
 | phone      | string     | null: false                    |
-| order_id   | references | null: false, foreign_key: true |
+| order      | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user
 - belongs_to :order
-- belongs_to :address
