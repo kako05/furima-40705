@@ -18,7 +18,6 @@
 
 - has_many :items
 - has_many :orders
-- has_many :addresses
 
 
 
@@ -31,16 +30,15 @@
 | category_id  | integer    | null: false                    |
 | condition_id | integer    | null: false                    |
 | shipping_id  | integer    | null: false                    |
-| region-id    | integer    | null: false                    |
-| date-id      | integer    | null: false                    |
+| region_id    | integer    | null: false                    |
+| date_id      | integer    | null: false                    |
 | price        | decimal    | null: false                    |
 | user_id      | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :order
-- belongs_to :address
+- has_one :order
 
 
 
@@ -48,22 +46,23 @@
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| users  | references | null: false, foreign_key: true |
-| items  | references | null: false, foreign_key: true |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
+- belongs_to :item
 - has_one :address
 
 
 
-## addresses
+## addresses テーブル
 
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
-| postcode   | string       | null: false                    |
-| prefecture | enum       | null: false                    |
+| postcode   | string     | null: false                    |
+| region_id  | integer    | null: false                    |
 | city       | string     | null: false                    
 | house_unm  | string     | null: false                    |
 | building   | string     |                                |
