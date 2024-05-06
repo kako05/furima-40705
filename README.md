@@ -23,17 +23,17 @@
 
 ## items テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| title        | string     | null: false                    |
-| text         | text       | null: false                    |
-| category_id  | integer    | null: false                    |
-| condition_id | integer    | null: false                    |
-| shipping_id  | integer    | null: false                    |
-| region_id    | integer    | null: false                    |
-| date_id      | integer    | null: false                    |
-| price        | decimal    | null: false                    |
-| user_id      | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| title            | string     | null: false                    |
+| text             | text       | null: false                    |
+| category_id      | integer    | null: false                    |
+| condition_id     | integer    | null: false                    |
+| shipping_id      | integer    | null: false                    |
+| region_id        | integer    | null: false                    |
+| schedule_date_id | integer    | null: false                    |
+| price            | integer    | null: false                    |
+| user             | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -64,7 +64,7 @@
 | postcode   | string     | null: false                    |
 | region_id  | integer    | null: false                    |
 | city       | string     | null: false                    
-| house_unm  | string     | null: false                    |
+| house_num  | string     | null: false                    |
 | building   | string     |                                |
 | phone      | string     | null: false                    |
 | order      | references | null: false, foreign_key: true |
