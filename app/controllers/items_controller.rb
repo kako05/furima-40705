@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.create(item_paramus)
+    @item = Item.new(item_paramus)
     if @item.save
       redirect_to '/'
     else
