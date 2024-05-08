@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :items
+
   validates :password, format: {with: /\A(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z]+\z/, message: "is invalid. Please input a combination of half-width alphanumeric characters."}
   with_options presence: true do
     validates :nickname, :birthday
