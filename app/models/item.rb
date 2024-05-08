@@ -11,8 +11,8 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     validates :title, :text, :price, :user
-    validates :category_id, :condition_id, :shipping_id, :schedule_date_id, numericality: { other_than: 1 }
-    validates :region_id, numericality: { other_than: 0 }
+    validates :category_id, :condition_id, :shipping_id, :schedule_date_id, numericality: { other_than: 1, message: "can't be blank"}
+    validates :region_id, numericality: { other_than: 0, message: "can't be blank" }
     validates :price, format: { with: /\A\d+\z/, message: "half-width numbers only" }, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is invalid"}
   end
 end
