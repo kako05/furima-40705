@@ -27,7 +27,7 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Text can't be blank")
       end
-      it "カテゴリーを見選択だと登録できない" do
+      it "カテゴリーを未選択だと登録できない" do
         @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
@@ -43,7 +43,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Shipping can't be blank")
       end
       it "発送元が未選択だと登録できない" do
-        @item.region = nil
+        @item.region_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Region can't be blank")
       end
@@ -71,6 +71,11 @@ RSpec.describe Item, type: :model do
         @item.price = "５００"
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is invalid,half-width numbers only")
+      end
+      it "userが紐付いていない場合は登録できない" do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("User must exist", "User can't be blank")
       end
     end
   end
