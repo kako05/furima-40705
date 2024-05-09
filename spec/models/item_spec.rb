@@ -60,17 +60,17 @@ RSpec.describe Item, type: :model do
       it "価格が¥299以下だと登録できない" do
         @item.price = 100
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid")
+        expect(@item.errors.full_messages).to include("Price is invalid,half-width numbers only")
       end
       it "価格が¥10000000以上だと登録できない" do
         @item.price = 11111111
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid")
+        expect(@item.errors.full_messages).to include("Price is invalid,half-width numbers only")
       end
       it "価格は全角だと登録できない" do
         @item.price = "５００"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid")
+        expect(@item.errors.full_messages).to include("Price is invalid,half-width numbers only")
       end
     end
   end

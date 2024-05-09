@@ -13,7 +13,7 @@ class Item < ApplicationRecord
     validates :title, :text, :user
     validates :category_id, :condition_id, :shipping_id, :schedule_date_id, numericality: { other_than: 1, message: "can't be blank"}
     validates :region_id, numericality: { other_than: 0, message: "can't be blank" }
-    validates :price, format: { with: /\A\d+\z/, message: "half-width numbers only" }, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is invalid"}
+    validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is invalid,half-width numbers only"}
     validates :image, presence: { message: "can't be blank" }
   end
 end
