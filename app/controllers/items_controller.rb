@@ -46,7 +46,6 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    @item =Item.find(params[:id])
     return if current_user == @item.user
     redirect_to new_user_session_path
   end
