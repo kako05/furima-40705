@@ -9,7 +9,7 @@ RSpec.describe OrderAddress, type: :model do
 
   describe '購入する' do
     context '購入できるとき' do
-      it '正しい入力がされているとき' do
+      it 'カード情報と購入者情報が正しく入力がされているとき' do
         expect(@odr_add).to be_valid
       end
     end
@@ -69,6 +69,11 @@ RSpec.describe OrderAddress, type: :model do
         @odr_add.phone = "０９０１２３４５６７８"
         @odr_add.valid?
         expect(@odr_add.errors.full_messages).to include("Phone is invalid")
+      end
+      it 'カード情報が空のとき' do
+        @odr_add.token = nil
+        @odr_add.valid?
+        expect(@odr_add.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
