@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   before_action :move_to_top, only: [:index, :create]
 
   def index
+    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @orderaddress = OrderAddress.new
     if @item.order.present?
       redirect_to root_path
@@ -17,6 +18,7 @@ class OrdersController < ApplicationController
       @orderaddress.save
       redirect_to root_path
     else
+      gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
       render :index, status: :unprocessable_entity
     end
   end
@@ -28,7 +30,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order_address).permit(:postcode, :region_id, :city, :house_num, :building, :phone, :order_id).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
+    params.require(:order_address).permit(:postcode, :region_id, :city, :house_num, :building, :phone).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
   end
 
   def move_to_top
