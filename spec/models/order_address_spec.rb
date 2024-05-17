@@ -13,7 +13,7 @@ RSpec.describe OrderAddress, type: :model do
         expect(@odr_add).to be_valid
       end
       it '建物名がなくてもその墓が入力されているとき' do
-        @odr_add.buliding = nil
+        @odr_add.building = nil
         expect(@odr_add).to be_valid
       end
     end
