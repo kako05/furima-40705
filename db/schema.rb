@@ -54,14 +54,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_14_090638) do
 
   create_table "items", charset: "utf8", force: :cascade do |t|
     t.string "title", null: false
-    t.text "text"
-    t.integer "category_id"
-    t.integer "condition_id"
-    t.integer "shipping_id"
-    t.integer "region_id"
-    t.integer "schedule_date_id"
-    t.integer "price"
-    t.bigint "user_id"
+    t.text "text", null: false
+    t.integer "category_id", null: false
+    t.integer "condition_id", null: false
+    t.integer "shipping_id", null: false
+    t.integer "region_id", null: false
+    t.integer "schedule_date_id", null: false
+    t.integer "price", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_items_on_user_id"
