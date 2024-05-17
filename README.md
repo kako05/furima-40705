@@ -63,7 +63,7 @@
 | ---------- | ---------- | ------------------------------ |
 | postcode   | string     | null: false                    |
 | region_id  | integer    | null: false                    |
-| city       | string     | null: false                    
+| city       | string     | null: false                    |
 | house_num  | string     | null: false                    |
 | building   | string     |                                |
 | phone      | string     | null: false                    |
