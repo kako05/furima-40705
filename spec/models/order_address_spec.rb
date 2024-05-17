@@ -12,6 +12,10 @@ RSpec.describe OrderAddress, type: :model do
       it 'カード情報と購入者情報が正しく入力がされているとき' do
         expect(@odr_add).to be_valid
       end
+      it '建物名がなくてもその墓が入力されているとき' do
+        @odr_add.buliding = nil
+        expect(@odr_add).to be_valid
+      end
     end
 
     context '購入できないとき' do
